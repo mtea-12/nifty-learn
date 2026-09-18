@@ -1,6 +1,7 @@
 import * as React from "react";
 import {
   guruSeed,
+  kepalaSekolahSeed,
   kelasSeed,
   logSeed,
   mapelSeed,
@@ -10,6 +11,7 @@ import {
   tahunAjaranSeed,
   type Guru,
   type Kelas,
+  type KepalaSekolah,
   type LogAktivitas,
   type Mapel,
   type Nilai,
@@ -35,6 +37,7 @@ type State = {
   guruAktifId: string;
   waliAktifId: string;
   siswaAktifId: string;
+  kepalaSekolah: KepalaSekolah;
 };
 
 const initialState: State = {
@@ -51,6 +54,7 @@ const initialState: State = {
   guruAktifId: "g5",
   waliAktifId: "g2",
   siswaAktifId: "s1",
+  kepalaSekolah: kepalaSekolahSeed,
 };
 
 const STORAGE_KEY = "nifty-grades-hub-v1";
@@ -74,6 +78,7 @@ type Ctx = State & {
   ubahNilai: (siswaId: string, mapelId: string, field: keyof Pick<Nilai, "tugas" | "harian" | "pts" | "pas">, value: number | null) => void;
   setBobot: (b: Bobot) => void;
   ubahRapor: (siswaId: string, patch: Partial<RaporTambahan>) => void;
+  ubahKepalaSekolah: (patch: Partial<KepalaSekolah>) => void;
   resetData: () => void;
 };
 
@@ -233,6 +238,10 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
           ? prev.rapor.map((r) => (r.siswaId === siswaId ? { ...r, ...patch } : r))
           : [...prev.rapor, { siswaId, ekskul: [], sakit: 0, izin: 0, alpa: 0, catatan: "", ...patch }],
       }));
+    },
+    ubahKepalaSekolah: (patch) => {
+      setState((prev) => ({ ...prev, kepalaSekolah: { ...prev.kepalaSekolah, ...patch } }));
+      catatLog("Ubah Data", "Rapor", "Memperbarui identitas kepala sekolah");
     },
     resetData: () => {
       setState(initialState);

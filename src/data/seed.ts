@@ -1,13 +1,22 @@
 export type Peran = "admin" | "guru" | "wali" | "siswa";
 
+export type JenisIdentitas = "NIP" | "NBM";
+
 export type Guru = {
   id: string;
   nip: string;
+  jenisIdentitas?: JenisIdentitas;
   nama: string;
   email: string;
   telepon: string;
   mapelIds: string[];
   status: "PNS" | "PPPK" | "GTY" | "Honorer";
+};
+
+export type KepalaSekolah = {
+  nama: string;
+  jenisIdentitas: JenisIdentitas;
+  nomorIdentitas: string;
 };
 
 export type Kelas = {
@@ -82,6 +91,12 @@ export type RaporTambahan = {
 export const NAMA_SEKOLAH = "SMK Muhammadiyah 1 Paguyangan";
 export const ALAMAT_SEKOLAH = "Jl. Raya Paguyangan Km. 3 Paguyangan, Kab. Brebes, Jawa Tengah";
 export const TELP_SEKOLAH = "Telp. (0289) 4311929";
+
+export const kepalaSekolahSeed: KepalaSekolah = {
+  nama: "Drs. H. Suryadi, M.Pd.",
+  jenisIdentitas: "NIP",
+  nomorIdentitas: "",
+};
 
 export const mapelSeed: Mapel[] = [
   { id: "mp1", kode: "PAI", nama: "Pendidikan Agama & Budi Pekerti", kelompok: "Umum", kkm: 75 },
