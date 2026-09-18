@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Plus, Pencil, Trash2, Search } from "lucide-react";
+import { Plus, Pencil, Trash2, Search, X } from "lucide-react";
 import { toast } from "sonner";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -20,7 +20,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { JudulHalaman, Penjaga } from "@/components/halaman";
 import { useApp } from "@/store/app-store";
-import type { Guru } from "@/data/seed";
+import type { Guru, JenisIdentitas } from "@/data/seed";
 
 export const Route = createFileRoute("/guru")({
   head: () => ({
@@ -38,7 +38,7 @@ export const Route = createFileRoute("/guru")({
   ),
 });
 
-const kosong: Guru = { id: "", nip: "", nama: "", email: "", telepon: "", mapelIds: [], status: "PNS" };
+const kosong: Guru = { id: "", nip: "", jenisIdentitas: "NIP", nama: "", email: "", telepon: "", mapelIds: [], status: "PNS" };
 
 function HalamanGuru() {
   const { guru, mapel, kelas, simpanGuru, hapusGuru } = useApp();
@@ -53,8 +53,8 @@ function HalamanGuru() {
 
   function simpan() {
     if (!form) return;
-    if (!form.nama.trim() || !form.nip.trim()) {
-      toast.error("Nama dan NIP wajib diisi.");
+    if (!form.nama.trim()) {
+      toast.error("Nama guru wajib diisi.");
       return;
     }
     simpanGuru({ ...form, id: form.id || `g${Date.now()}` });
@@ -86,7 +86,7 @@ function HalamanGuru() {
               <TableHeader>
                 <TableRow>
                   <TableHead>Nama</TableHead>
-                  <TableHead>NIP</TableHead>
+                  <TableHead>NIP / NBM</TableHead>
                   <TableHead>Kontak</TableHead>
                   <TableHead>Mapel Diampu</TableHead>
                   <TableHead>Wali Kelas</TableHead>
@@ -98,7 +98,7 @@ function HalamanGuru() {
                 {daftar.map((g) => (
                   <TableRow key={g.id}>
                     <TableCell className="font-medium">{g.nama}</TableCell>
-                    <TableCell className="font-mono text-xs">{g.nip}</TableCell>
+                    <TableCell className="font-mono text-xs">{g.nip ? `${g.jenisIdentitas ?? "NIP"}. ${g.nip}` : "—"}</TableCell>
                     <TableCell className="text-xs">
                       <div>{g.email}</div>
                       <div className="text-muted-foreground">{g.telepon}</div>
@@ -160,9 +160,34 @@ function HalamanGuru() {
                 <Label htmlFor="nama">Nama Lengkap</Label>
                 <Input id="nama" value={form.nama} onChange={(e) => setForm({ ...form, nama: e.target.value })} />
               </div>
-              <div>
-                <Label htmlFor="nip">NIP</Label>
-                <Input id="nip" value={form.nip} onChange={(e) => setForm({ ...form, nip: e.target.value })} />
+              <div className="sm:col-span-2">
+                <Label>Nomor Identitas</Label>
+                <div className="mt-1 flex gap-2">
+                  <Select
+                    value={form.jenisIdentitas ?? "NIP"}
+                    onValueChange={(v) => setForm({ ...form, jenisIdentitas: v as JenisIdentitas })}
+                  >
+                    <SelectTrigger className="w-28" aria-label="Jenis identitas guru">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="NIP">NIP</SelectItem>
+                      <SelectItem value="NBM">NBM</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <Input
+                    id="nip"
+                    aria-label={`Nomor ${form.jenisIdentitas ?? "NIP"}`}
+                    placeholder={`Masukkan nomor ${form.jenisIdentitas ?? "NIP"}`}
+                    value={form.nip}
+                    onChange={(e) => setForm({ ...form, nip: e.target.value })}
+                  />
+                  {form.nip ? (
+                    <Button variant="outline" size="icon" title="Hapus nomor identitas" onClick={() => setForm({ ...form, nip: "" })}>
+                      <X className="h-4 w-4" />
+                    </Button>
+                  ) : null}
+                </div>
               </div>
               <div>
                 <Label>Status Kepegawaian</Label>

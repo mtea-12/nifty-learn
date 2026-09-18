@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Printer } from "lucide-react";
+import { Printer, X } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { JudulHalaman, Penjaga } from "@/components/halaman";
 import { useApp } from "@/store/app-store";
 import { deskripsiPredikat, hitungNilaiAkhir, predikat } from "@/lib/penilaian";
-import { ALAMAT_SEKOLAH, NAMA_SEKOLAH, TELP_SEKOLAH, mapelPerKelas } from "@/data/seed";
+import { ALAMAT_SEKOLAH, NAMA_SEKOLAH, TELP_SEKOLAH, mapelPerKelas, type JenisIdentitas } from "@/data/seed";
 import logoSekolah from "@/assets/logo-smk.jpg.asset.json";
 
 export const Route = createFileRoute("/rapor")({
@@ -32,7 +32,23 @@ export const Route = createFileRoute("/rapor")({
 
 function HalamanRapor() {
   const app = useApp();
-  const { siswa, kelas, mapel, nilai, bobot, rapor, tahunAktif, guru, peran, siswaAktifId, waliAktifId, ubahRapor, catatLog } = app;
+  const {
+    siswa,
+    kelas,
+    mapel,
+    nilai,
+    bobot,
+    rapor,
+    tahunAktif,
+    guru,
+    peran,
+    siswaAktifId,
+    waliAktifId,
+    kepalaSekolah,
+    ubahRapor,
+    ubahKepalaSekolah,
+    catatLog,
+  } = app;
 
   const siswaTersedia =
     peran === "siswa"
@@ -118,6 +134,49 @@ function HalamanRapor() {
                 <div className="md:col-span-2">
                   <Label>Catatan Wali Kelas</Label>
                   <Textarea rows={3} value={tambahan?.catatan ?? ""} onChange={(e) => ubahRapor(s.id, { catatan: e.target.value })} />
+                </div>
+                <div className="space-y-3 border-t pt-4 md:col-span-2">
+                  <div>
+                    <Label htmlFor="nama-kepala-sekolah">Nama Kepala Sekolah</Label>
+                    <Input
+                      id="nama-kepala-sekolah"
+                      value={kepalaSekolah.nama}
+                      onChange={(e) => ubahKepalaSekolah({ nama: e.target.value })}
+                    />
+                  </div>
+                  <div>
+                    <Label>Nomor Identitas Kepala Sekolah</Label>
+                    <div className="mt-1 flex gap-2">
+                      <Select
+                        value={kepalaSekolah.jenisIdentitas}
+                        onValueChange={(v) => ubahKepalaSekolah({ jenisIdentitas: v as JenisIdentitas })}
+                      >
+                        <SelectTrigger className="w-28" aria-label="Jenis identitas kepala sekolah">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="NIP">NIP</SelectItem>
+                          <SelectItem value="NBM">NBM</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <Input
+                        aria-label={`Nomor ${kepalaSekolah.jenisIdentitas} kepala sekolah`}
+                        placeholder={`Masukkan nomor ${kepalaSekolah.jenisIdentitas}`}
+                        value={kepalaSekolah.nomorIdentitas}
+                        onChange={(e) => ubahKepalaSekolah({ nomorIdentitas: e.target.value })}
+                      />
+                      {kepalaSekolah.nomorIdentitas ? (
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          title="Hapus nomor identitas kepala sekolah"
+                          onClick={() => ubahKepalaSekolah({ nomorIdentitas: "" })}
+                        >
+                          <X className="h-4 w-4" />
+                        </Button>
+                      ) : null}
+                    </div>
+                  </div>
                 </div>
               </>
             ) : null}
@@ -243,11 +302,13 @@ function HalamanRapor() {
             <p>Wali Kelas</p>
             <div className="h-12" />
             <p className="border-t border-slate-400 pt-1">{wali?.nama}</p>
+            {wali?.nip ? <p>{wali.jenisIdentitas ?? "NIP"}. {wali.nip}</p> : null}
           </div>
           <div>
             <p>Kepala Sekolah</p>
             <div className="h-16" />
-            <p className="border-t border-slate-400 pt-1">Drs. H. Suryadi, M.Pd.</p>
+            <p className="border-t border-slate-400 pt-1">{kepalaSekolah.nama || "—"}</p>
+            {kepalaSekolah.nomorIdentitas ? <p>{kepalaSekolah.jenisIdentitas}. {kepalaSekolah.nomorIdentitas}</p> : null}
           </div>
         </div>
       </div>
