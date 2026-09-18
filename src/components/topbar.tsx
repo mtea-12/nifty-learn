@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useApp } from "@/store/app-store";
 import { NAMA_SEKOLAH, type Peran } from "@/data/seed";
+import logoSekolah from "@/assets/logo-smk.jpg.asset.json";
 
 const labelPeran: Record<Peran, string> = {
   admin: "Admin",
@@ -23,6 +24,7 @@ export function Topbar() {
   return (
     <header className="tanpa-cetak sticky top-0 z-20 flex flex-wrap items-center gap-3 border-b bg-card px-4 py-2.5">
       <SidebarTrigger />
+      <img src={logoSekolah.url} alt="Logo sekolah" className="h-8 w-8 shrink-0 rounded-md bg-white object-contain p-0.5" />
       <div className="mr-auto min-w-0">
         <p className="truncate text-sm font-semibold">{NAMA_SEKOLAH}</p>
         <p className="truncate text-xs text-muted-foreground">Sistem Informasi Nilai & Rapor</p>
