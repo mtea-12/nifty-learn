@@ -109,7 +109,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     return state.siswa.find((s) => s.id === state.siswaAktifId)?.nama ?? "Siswa";
   }, [state.peran, state.guru, state.siswa, state.guruAktifId, state.waliAktifId, state.siswaAktifId]);
 
-  const tahunAktif = state.tahunAjaran.find((t) => t.aktif) ?? state.tahunAjaran[state.tahunAjaran.length - 1];
+  const tahunAktif = state.tahunAjaran.find((t) => t.aktif) ?? (state.tahunAjaran[state.tahunAjaran.length - 1] as TahunAjaran);
 
   const catatLog = React.useCallback(
     (aksi: string, modul: string, keterangan: string) => {
@@ -208,7 +208,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     },
     ubahNilai: (siswaId, mapelId, field, value) => {
       setState((prev) => {
-        const taId = (prev.tahunAjaran.find((t) => t.aktif) ?? prev.tahunAjaran[0]).id;
+        const taId = (prev.tahunAjaran.find((t) => t.aktif) ?? (prev.tahunAjaran[0] as TahunAjaran)).id;
         const ada = prev.nilai.find((n) => n.siswaId === siswaId && n.mapelId === mapelId && n.tahunAjaranId === taId);
         if (ada) {
           return { ...prev, nilai: prev.nilai.map((n) => (n.id === ada.id ? { ...n, [field]: value } : n)) };

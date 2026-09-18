@@ -76,7 +76,7 @@ function HalamanRekap() {
       const nilaiMapel = mapelKelas.map((m) => na(s.id, m.id));
       const terisi = nilaiMapel.filter((v): v is number => v !== null);
       const rata = terisi.length ? Math.round((terisi.reduce((a, b) => a + b, 0) / terisi.length) * 10) / 10 : null;
-      const tuntas = mapelKelas.filter((m, i) => nilaiMapel[i] !== null && (nilaiMapel[i] as number) >= m.kkm).length;
+      const tuntas = mapelKelas.filter((m, i) => nilaiMapel[i] != null && (nilaiMapel[i] as number) >= m.kkm).length;
       return { siswa: s, nilaiMapel, rata, tuntas };
     })
     .sort((a, b) => (b.rata ?? -1) - (a.rata ?? -1));
@@ -101,7 +101,8 @@ function HalamanRekap() {
       const v = na(s.id, m.id);
       if (v === null) return;
       const idx = v >= 90 ? 0 : v >= 80 ? 1 : v >= 70 ? 2 : 3;
-      distribusi[idx].jumlah++;
+      const d = distribusi[idx];
+      if (d) d.jumlah++;
     }),
   );
 
@@ -225,14 +226,17 @@ function HalamanRekap() {
                   <TableRow key={b.siswa.id}>
                     <TableCell className="text-muted-foreground">{i + 1}</TableCell>
                     <TableCell className="font-medium">{b.siswa.nama}</TableCell>
-                    {b.nilaiMapel.map((v, idx) => (
-                      <TableCell
-                        key={mapelKelas[idx].id}
-                        className={`text-center ${v !== null && v < mapelKelas[idx].kkm ? "font-medium text-destructive" : ""}`}
-                      >
-                        {v ?? "—"}
-                      </TableCell>
-                    ))}
+                    {b.nilaiMapel.map((v, idx) => {
+                      const m = mapelKelas[idx];
+                      return (
+                        <TableCell
+                          key={m?.id ?? idx}
+                          className={`text-center ${v !== null && m && v < m.kkm ? "font-medium text-destructive" : ""}`}
+                        >
+                          {v ?? "—"}
+                        </TableCell>
+                      );
+                    })}
                     <TableCell className="text-center font-semibold">{b.rata ?? "—"}</TableCell>
                     <TableCell className="text-center">
                       <span
