@@ -10,8 +10,9 @@ import {
   BarChart3,
   FileText,
   History,
-  BookMarked,
 } from "lucide-react";
+
+import logoSekolah from "@/assets/logo-smk.jpg.asset.json";
 
 import {
   Sidebar,
@@ -68,7 +69,7 @@ export function AppSidebar() {
     <Sidebar collapsible="icon">
       <SidebarHeader className="border-b border-sidebar-border">
         <div className="flex items-center gap-2 px-2 py-2">
-          <img src={logoSekolah} alt="Logo SMK Muhammadiyah 1 Paguyangan" className="h-9 w-9 shrink-0 rounded-lg bg-white object-contain p-0.5" />
+          <img src={logoSekolah.url} alt="Logo SMK Muhammadiyah 1 Paguyangan" className="h-9 w-9 shrink-0 rounded-lg bg-white object-contain p-0.5" />
           <div className="min-w-0 group-data-[collapsible=icon]:hidden">
             <p className="truncate text-sm font-semibold text-sidebar-foreground">Nifty Grades Hub</p>
             <p className="truncate text-xs text-sidebar-foreground/60">Sistem Nilai & Rapor</p>
