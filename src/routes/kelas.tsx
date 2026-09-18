@@ -25,9 +25,9 @@ import type { Kelas } from "@/data/seed";
 export const Route = createFileRoute("/kelas")({
   head: () => ({
     meta: [
-      { title: "Manajemen Kelas — Nifty Grades Hub" },
+      { title: "Manajemen Kelas — SMK Muhammadiyah 1 Paguyangan" },
       { name: "description", content: "Daftar tingkat dan rombongan belajar beserta penunjukan wali kelas." },
-      { property: "og:title", content: "Manajemen Kelas — Nifty Grades Hub" },
+      { property: "og:title", content: "Manajemen Kelas — SMK Muhammadiyah 1 Paguyangan" },
       { property: "og:description", content: "Daftar tingkat dan rombongan belajar beserta wali kelas." },
     ],
   }),

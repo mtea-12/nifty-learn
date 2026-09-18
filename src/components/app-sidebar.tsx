@@ -71,7 +71,7 @@ export function AppSidebar() {
         <div className="flex items-center gap-2 px-2 py-2">
           <img src={logoSekolah.url} alt="Logo SMK Muhammadiyah 1 Paguyangan" className="h-9 w-9 shrink-0 rounded-lg bg-white object-contain p-0.5" />
           <div className="min-w-0 group-data-[collapsible=icon]:hidden">
-            <p className="truncate text-sm font-semibold text-sidebar-foreground">Nifty Grades Hub</p>
+            <p className="truncate text-sm font-semibold text-sidebar-foreground">SMK Muhammadiyah 1 Paguyangan</p>
             <p className="truncate text-xs text-sidebar-foreground/60">Sistem Nilai & Rapor</p>
           </div>
         </div>

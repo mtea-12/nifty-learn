@@ -80,7 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Nifty Grades Hub — Sistem Informasi Nilai & Rapor Sekolah" },
+      { title: "SMK Muhammadiyah 1 Paguyangan — Sistem Informasi Nilai & Rapor Sekolah" },
       {
         name: "description",
         content: "Aplikasi pengelolaan nilai, rekap akademik, dan cetak rapor sekolah.",

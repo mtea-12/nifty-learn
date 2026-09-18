@@ -13,9 +13,9 @@ import { useApp } from "@/store/app-store";
 export const Route = createFileRoute("/log-aktivitas")({
   head: () => ({
     meta: [
-      { title: "Log Aktivitas — Nifty Grades Hub" },
+      { title: "Log Aktivitas — SMK Muhammadiyah 1 Paguyangan" },
       { name: "description", content: "Audit trail perubahan nilai dan data master beserta pelaku dan waktu." },
-      { property: "og:title", content: "Log Aktivitas — Nifty Grades Hub" },
+      { property: "og:title", content: "Log Aktivitas — SMK Muhammadiyah 1 Paguyangan" },
       { property: "og:description", content: "Audit trail perubahan nilai dan data master." },
     ],
   }),

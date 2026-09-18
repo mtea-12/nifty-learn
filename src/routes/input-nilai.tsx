@@ -18,9 +18,9 @@ import { mapelPerKelas, type Nilai } from "@/data/seed";
 export const Route = createFileRoute("/input-nilai")({
   head: () => ({
     meta: [
-      { title: "Input Nilai — Nifty Grades Hub" },
+      { title: "Input Nilai — SMK Muhammadiyah 1 Paguyangan" },
       { name: "description", content: "Input nilai tugas, harian, PTS/STS, dan PAS/SAS dengan nilai akhir dan predikat otomatis." },
-      { property: "og:title", content: "Input Nilai — Nifty Grades Hub" },
+      { property: "og:title", content: "Input Nilai — SMK Muhammadiyah 1 Paguyangan" },
       { property: "og:description", content: "Input nilai dengan kalkulasi nilai akhir dan predikat otomatis." },
     ],
   }),

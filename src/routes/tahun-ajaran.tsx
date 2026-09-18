@@ -25,9 +25,9 @@ import { bobotDefault } from "@/lib/penilaian";
 export const Route = createFileRoute("/tahun-ajaran")({
   head: () => ({
     meta: [
-      { title: "Tahun Ajaran & Semester — Nifty Grades Hub" },
+      { title: "Tahun Ajaran & Semester — SMK Muhammadiyah 1 Paguyangan" },
       { name: "description", content: "Pengaturan tahun akademik aktif, semester Ganjil/Genap, dan bobot penilaian." },
-      { property: "og:title", content: "Tahun Ajaran & Semester — Nifty Grades Hub" },
+      { property: "og:title", content: "Tahun Ajaran & Semester — SMK Muhammadiyah 1 Paguyangan" },
       { property: "og:description", content: "Pengaturan tahun akademik aktif dan bobot penilaian." },
     ],
   }),

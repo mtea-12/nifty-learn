@@ -25,9 +25,9 @@ import type { Mapel } from "@/data/seed";
 export const Route = createFileRoute("/mata-pelajaran")({
   head: () => ({
     meta: [
-      { title: "Mata Pelajaran & KKM — Nifty Grades Hub" },
+      { title: "Mata Pelajaran & KKM — SMK Muhammadiyah 1 Paguyangan" },
       { name: "description", content: "Daftar mata pelajaran, kode, kelompok, dan kriteria ketuntasan minimal." },
-      { property: "og:title", content: "Mata Pelajaran & KKM — Nifty Grades Hub" },
+      { property: "og:title", content: "Mata Pelajaran & KKM — SMK Muhammadiyah 1 Paguyangan" },
       { property: "og:description", content: "Daftar mata pelajaran, kode, kelompok, dan KKM." },
     ],
   }),

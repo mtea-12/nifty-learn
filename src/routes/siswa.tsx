@@ -25,9 +25,9 @@ import type { Siswa } from "@/data/seed";
 export const Route = createFileRoute("/siswa")({
   head: () => ({
     meta: [
-      { title: "Manajemen Siswa — Nifty Grades Hub" },
+      { title: "Manajemen Siswa — SMK Muhammadiyah 1 Paguyangan" },
       { name: "description", content: "Data induk siswa: NISN, NIS, kelas aktif, dan data orang tua/wali." },
-      { property: "og:title", content: "Manajemen Siswa — Nifty Grades Hub" },
+      { property: "og:title", content: "Manajemen Siswa — SMK Muhammadiyah 1 Paguyangan" },
       { property: "og:description", content: "Data induk siswa: NISN, NIS, kelas aktif, dan data orang tua/wali." },
     ],
   }),
