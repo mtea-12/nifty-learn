@@ -17,9 +17,9 @@ import logoSekolah from "@/assets/logo-smk.jpg.asset.json";
 export const Route = createFileRoute("/rapor")({
   head: () => ({
     meta: [
-      { title: "Cetak Rapor Semester — Nifty Grades Hub" },
+      { title: "Cetak Rapor Semester — SMK Muhammadiyah 1 Paguyangan" },
       { name: "description", content: "Rapor resmi siap cetak: identitas siswa, capaian nilai, ekstrakurikuler, presensi, dan catatan wali kelas." },
-      { property: "og:title", content: "Cetak Rapor Semester — Nifty Grades Hub" },
+      { property: "og:title", content: "Cetak Rapor Semester — SMK Muhammadiyah 1 Paguyangan" },
       { property: "og:description", content: "Rapor resmi siap cetak dan ekspor PDF." },
     ],
   }),

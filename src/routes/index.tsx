@@ -23,9 +23,9 @@ import { hitungNilaiAkhir, predikat } from "@/lib/penilaian";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dasbor — Nifty Grades Hub" },
+      { title: "Dasbor — SMK Muhammadiyah 1 Paguyangan" },
       { name: "description", content: "Ringkasan statistik sekolah, progres input nilai, dan aktivitas terkini." },
-      { property: "og:title", content: "Dasbor — Nifty Grades Hub" },
+      { property: "og:title", content: "Dasbor — SMK Muhammadiyah 1 Paguyangan" },
       { property: "og:description", content: "Ringkasan statistik sekolah, progres input nilai, dan aktivitas terkini." },
     ],
   }),

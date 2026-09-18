@@ -27,9 +27,9 @@ import { mapelPerKelas } from "@/data/seed";
 export const Route = createFileRoute("/rekap-nilai")({
   head: () => ({
     meta: [
-      { title: "Rekap & Analisis Nilai — Nifty Grades Hub" },
+      { title: "Rekap & Analisis Nilai — SMK Muhammadiyah 1 Paguyangan" },
       { name: "description", content: "Rekap nilai per kelas, per mata pelajaran, dan per semester dengan grafik distribusi." },
-      { property: "og:title", content: "Rekap & Analisis Nilai — Nifty Grades Hub" },
+      { property: "og:title", content: "Rekap & Analisis Nilai — SMK Muhammadiyah 1 Paguyangan" },
       { property: "og:description", content: "Rekap nilai per kelas dan per mata pelajaran dengan grafik distribusi." },
     ],
   }),

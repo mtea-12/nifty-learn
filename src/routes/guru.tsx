@@ -25,9 +25,9 @@ import type { Guru } from "@/data/seed";
 export const Route = createFileRoute("/guru")({
   head: () => ({
     meta: [
-      { title: "Manajemen Guru & Tenaga Pendidik — Nifty Grades Hub" },
+      { title: "Manajemen Guru & Tenaga Pendidik — SMK Muhammadiyah 1 Paguyangan" },
       { name: "description", content: "Kelola data guru, NIP, kontak, mata pelajaran yang diampu, dan penugasan wali kelas." },
-      { property: "og:title", content: "Manajemen Guru & Tenaga Pendidik — Nifty Grades Hub" },
+      { property: "og:title", content: "Manajemen Guru & Tenaga Pendidik — SMK Muhammadiyah 1 Paguyangan" },
       { property: "og:description", content: "Kelola data guru, NIP, kontak, dan penugasan wali kelas." },
     ],
   }),
