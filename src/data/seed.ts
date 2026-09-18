@@ -79,8 +79,9 @@ export type RaporTambahan = {
   catatan: string;
 };
 
-export const NAMA_SEKOLAH = "SMK Negeri 1 Nusantara";
-export const ALAMAT_SEKOLAH = "Jl. Pendidikan No. 45, Bandung, Jawa Barat";
+export const NAMA_SEKOLAH = "SMK Muhammadiyah 1 Paguyangan";
+export const ALAMAT_SEKOLAH = "Jl. Raya Paguyangan Km. 3 Paguyangan, Kab. Brebes, Jawa Tengah";
+export const TELP_SEKOLAH = "Telp. (0289) 4311929";
 
 export const mapelSeed: Mapel[] = [
   { id: "mp1", kode: "PAI", nama: "Pendidikan Agama & Budi Pekerti", kelompok: "Umum", kkm: 75 },

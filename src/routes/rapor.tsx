@@ -11,7 +11,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { JudulHalaman, Penjaga } from "@/components/halaman";
 import { useApp } from "@/store/app-store";
 import { deskripsiPredikat, hitungNilaiAkhir, predikat } from "@/lib/penilaian";
-import { ALAMAT_SEKOLAH, NAMA_SEKOLAH, mapelPerKelas } from "@/data/seed";
+import { ALAMAT_SEKOLAH, NAMA_SEKOLAH, TELP_SEKOLAH, mapelPerKelas } from "@/data/seed";
+import logoSekolah from "@/assets/logo-smk.jpg.asset.json";
 
 export const Route = createFileRoute("/rapor")({
   head: () => ({
@@ -125,10 +126,15 @@ function HalamanRapor() {
       </div>
 
       <div className="area-cetak rounded-lg border bg-white p-8 text-slate-900 shadow-sm">
-        <div className="border-b-2 border-slate-800 pb-4 text-center">
-          <h2 className="text-lg font-bold uppercase">Laporan Hasil Belajar Peserta Didik</h2>
-          <p className="text-base font-semibold">{NAMA_SEKOLAH}</p>
-          <p className="text-xs">{ALAMAT_SEKOLAH}</p>
+        <div className="flex items-center justify-center gap-4 border-b-2 border-slate-800 pb-4 text-center">
+          <img src={logoSekolah.url} alt="Logo sekolah" className="h-16 w-16 shrink-0 object-contain" />
+          <div className="flex-1 text-center">
+            <h2 className="text-lg font-bold uppercase">Laporan Hasil Belajar Peserta Didik</h2>
+            <p className="text-base font-semibold">{NAMA_SEKOLAH}</p>
+            <p className="text-xs">{ALAMAT_SEKOLAH}</p>
+            <p className="text-xs">{TELP_SEKOLAH}</p>
+          </div>
+          <img src={logoSekolah.url} alt="" className="h-16 w-16 shrink-0 object-contain opacity-0" aria-hidden="true" />
         </div>
 
         <div className="mt-4 grid grid-cols-2 gap-x-8 gap-y-1 text-sm">
