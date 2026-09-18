@@ -68,9 +68,7 @@ export function AppSidebar() {
     <Sidebar collapsible="icon">
       <SidebarHeader className="border-b border-sidebar-border">
         <div className="flex items-center gap-2 px-2 py-2">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sidebar-primary">
-            <BookMarked className="h-5 w-5 text-sidebar-primary-foreground" />
-          </div>
+          <img src={logoSekolah} alt="Logo SMK Muhammadiyah 1 Paguyangan" className="h-9 w-9 shrink-0 rounded-lg bg-white object-contain p-0.5" />
           <div className="min-w-0 group-data-[collapsible=icon]:hidden">
             <p className="truncate text-sm font-semibold text-sidebar-foreground">Nifty Grades Hub</p>
             <p className="truncate text-xs text-sidebar-foreground/60">Sistem Nilai & Rapor</p>
