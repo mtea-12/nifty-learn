@@ -11,7 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GuruRouteImport } from './routes/guru'
+import { Route as InputNilaiRouteImport } from './routes/input-nilai'
 import { Route as KelasRouteImport } from './routes/kelas'
+import { Route as LogAktivitasRouteImport } from './routes/log-aktivitas'
 import { Route as MataPelajaranRouteImport } from './routes/mata-pelajaran'
 import { Route as SiswaRouteImport } from './routes/siswa'
 import { Route as TahunAjaranRouteImport } from './routes/tahun-ajaran'
@@ -26,9 +28,19 @@ const GuruRoute = GuruRouteImport.update({
   path: '/guru',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InputNilaiRoute = InputNilaiRouteImport.update({
+  id: '/input-nilai',
+  path: '/input-nilai',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KelasRoute = KelasRouteImport.update({
   id: '/kelas',
   path: '/kelas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LogAktivitasRoute = LogAktivitasRouteImport.update({
+  id: '/log-aktivitas',
+  path: '/log-aktivitas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MataPelajaranRoute = MataPelajaranRouteImport.update({
@@ -50,7 +62,9 @@ const TahunAjaranRoute = TahunAjaranRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/guru': typeof GuruRoute
+  '/input-nilai': typeof InputNilaiRoute
   '/kelas': typeof KelasRoute
+  '/log-aktivitas': typeof LogAktivitasRoute
   '/mata-pelajaran': typeof MataPelajaranRoute
   '/siswa': typeof SiswaRoute
   '/tahun-ajaran': typeof TahunAjaranRoute
@@ -58,7 +72,9 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/guru': typeof GuruRoute
+  '/input-nilai': typeof InputNilaiRoute
   '/kelas': typeof KelasRoute
+  '/log-aktivitas': typeof LogAktivitasRoute
   '/mata-pelajaran': typeof MataPelajaranRoute
   '/siswa': typeof SiswaRoute
   '/tahun-ajaran': typeof TahunAjaranRoute
@@ -67,7 +83,9 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/guru': typeof GuruRoute
+  '/input-nilai': typeof InputNilaiRoute
   '/kelas': typeof KelasRoute
+  '/log-aktivitas': typeof LogAktivitasRoute
   '/mata-pelajaran': typeof MataPelajaranRoute
   '/siswa': typeof SiswaRoute
   '/tahun-ajaran': typeof TahunAjaranRoute
@@ -75,14 +93,31 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/guru' | '/kelas' | '/mata-pelajaran' | '/siswa' | '/tahun-ajaran'
+    | '/'
+    | '/guru'
+    | '/input-nilai'
+    | '/kelas'
+    | '/log-aktivitas'
+    | '/mata-pelajaran'
+    | '/siswa'
+    | '/tahun-ajaran'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/guru' | '/kelas' | '/mata-pelajaran' | '/siswa' | '/tahun-ajaran'
+  to:
+    | '/'
+    | '/guru'
+    | '/input-nilai'
+    | '/kelas'
+    | '/log-aktivitas'
+    | '/mata-pelajaran'
+    | '/siswa'
+    | '/tahun-ajaran'
   id:
     | '__root__'
     | '/'
     | '/guru'
+    | '/input-nilai'
     | '/kelas'
+    | '/log-aktivitas'
     | '/mata-pelajaran'
     | '/siswa'
     | '/tahun-ajaran'
@@ -91,7 +126,9 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   GuruRoute: typeof GuruRoute
+  InputNilaiRoute: typeof InputNilaiRoute
   KelasRoute: typeof KelasRoute
+  LogAktivitasRoute: typeof LogAktivitasRoute
   MataPelajaranRoute: typeof MataPelajaranRoute
   SiswaRoute: typeof SiswaRoute
   TahunAjaranRoute: typeof TahunAjaranRoute
@@ -113,11 +150,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuruRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/input-nilai': {
+      id: '/input-nilai'
+      path: '/input-nilai'
+      fullPath: '/input-nilai'
+      preLoaderRoute: typeof InputNilaiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/kelas': {
       id: '/kelas'
       path: '/kelas'
       fullPath: '/kelas'
       preLoaderRoute: typeof KelasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/log-aktivitas': {
+      id: '/log-aktivitas'
+      path: '/log-aktivitas'
+      fullPath: '/log-aktivitas'
+      preLoaderRoute: typeof LogAktivitasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mata-pelajaran': {
@@ -147,7 +198,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   GuruRoute: GuruRoute,
+  InputNilaiRoute: InputNilaiRoute,
   KelasRoute: KelasRoute,
+  LogAktivitasRoute: LogAktivitasRoute,
   MataPelajaranRoute: MataPelajaranRoute,
   SiswaRoute: SiswaRoute,
   TahunAjaranRoute: TahunAjaranRoute,
