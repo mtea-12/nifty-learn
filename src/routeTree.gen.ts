@@ -10,33 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GuruRouteImport } from './routes/guru'
+import { Route as KelasRouteImport } from './routes/kelas'
+import { Route as MataPelajaranRouteImport } from './routes/mata-pelajaran'
+import { Route as SiswaRouteImport } from './routes/siswa'
+import { Route as TahunAjaranRouteImport } from './routes/tahun-ajaran'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuruRoute = GuruRouteImport.update({
+  id: '/guru',
+  path: '/guru',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KelasRoute = KelasRouteImport.update({
+  id: '/kelas',
+  path: '/kelas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MataPelajaranRoute = MataPelajaranRouteImport.update({
+  id: '/mata-pelajaran',
+  path: '/mata-pelajaran',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiswaRoute = SiswaRouteImport.update({
+  id: '/siswa',
+  path: '/siswa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TahunAjaranRoute = TahunAjaranRouteImport.update({
+  id: '/tahun-ajaran',
+  path: '/tahun-ajaran',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/guru': typeof GuruRoute
+  '/kelas': typeof KelasRoute
+  '/mata-pelajaran': typeof MataPelajaranRoute
+  '/siswa': typeof SiswaRoute
+  '/tahun-ajaran': typeof TahunAjaranRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/guru': typeof GuruRoute
+  '/kelas': typeof KelasRoute
+  '/mata-pelajaran': typeof MataPelajaranRoute
+  '/siswa': typeof SiswaRoute
+  '/tahun-ajaran': typeof TahunAjaranRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/guru': typeof GuruRoute
+  '/kelas': typeof KelasRoute
+  '/mata-pelajaran': typeof MataPelajaranRoute
+  '/siswa': typeof SiswaRoute
+  '/tahun-ajaran': typeof TahunAjaranRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/guru' | '/kelas' | '/mata-pelajaran' | '/siswa' | '/tahun-ajaran'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/guru' | '/kelas' | '/mata-pelajaran' | '/siswa' | '/tahun-ajaran'
+  id:
+    | '__root__'
+    | '/'
+    | '/guru'
+    | '/kelas'
+    | '/mata-pelajaran'
+    | '/siswa'
+    | '/tahun-ajaran'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GuruRoute: typeof GuruRoute
+  KelasRoute: typeof KelasRoute
+  MataPelajaranRoute: typeof MataPelajaranRoute
+  SiswaRoute: typeof SiswaRoute
+  TahunAjaranRoute: typeof TahunAjaranRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +106,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guru': {
+      id: '/guru'
+      path: '/guru'
+      fullPath: '/guru'
+      preLoaderRoute: typeof GuruRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kelas': {
+      id: '/kelas'
+      path: '/kelas'
+      fullPath: '/kelas'
+      preLoaderRoute: typeof KelasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mata-pelajaran': {
+      id: '/mata-pelajaran'
+      path: '/mata-pelajaran'
+      fullPath: '/mata-pelajaran'
+      preLoaderRoute: typeof MataPelajaranRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/siswa': {
+      id: '/siswa'
+      path: '/siswa'
+      fullPath: '/siswa'
+      preLoaderRoute: typeof SiswaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tahun-ajaran': {
+      id: '/tahun-ajaran'
+      path: '/tahun-ajaran'
+      fullPath: '/tahun-ajaran'
+      preLoaderRoute: typeof TahunAjaranRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GuruRoute: GuruRoute,
+  KelasRoute: KelasRoute,
+  MataPelajaranRoute: MataPelajaranRoute,
+  SiswaRoute: SiswaRoute,
+  TahunAjaranRoute: TahunAjaranRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
