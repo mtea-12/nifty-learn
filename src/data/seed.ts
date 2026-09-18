@@ -133,7 +133,7 @@ function buatSiswa(): Siswa[] {
     const jumlah = 12;
     for (let i = 0; i < jumlah; i++) {
       const laki = i % 2 === 0;
-      const nama = laki ? namaL[(ki * 6 + i) % namaL.length] : namaP[(ki * 6 + i) % namaP.length];
+      const nama = (laki ? namaL[(ki * 6 + i) % namaL.length] : namaP[(ki * 6 + i) % namaP.length]) as string;
       hasil.push({
         id: `s${urut}`,
         nisn: `00${71000000 + urut * 137}`,
@@ -141,10 +141,10 @@ function buatSiswa(): Siswa[] {
         nama,
         jk: laki ? "L" : "P",
         kelasId: kelas.id,
-        tempatLahir: kotaLahir[(urut + ki) % kotaLahir.length],
+        tempatLahir: kotaLahir[(urut + ki) % kotaLahir.length] as string,
         tanggalLahir: `${2006 + (ki % 3)}-${String(((urut * 3) % 12) + 1).padStart(2, "0")}-${String(((urut * 7) % 28) + 1).padStart(2, "0")}`,
-        ayah: `${namaL[(urut * 2) % namaL.length].split(" ")[0]} Suryana`,
-        ibu: `${namaP[(urut * 3) % namaP.length].split(" ")[0]} Maryati`,
+        ayah: `${(namaL[(urut * 2) % namaL.length] as string).split(" ")[0]} Suryana`,
+        ibu: `${(namaP[(urut * 3) % namaP.length] as string).split(" ")[0]} Maryati`,
         teleponOrtu: `0812${String(30000000 + urut * 4321).slice(0, 8)}`,
         alamat: `Jl. Melati No. ${urut + 10}, ${kotaLahir[(urut + 1) % kotaLahir.length]}`,
       });
